@@ -62,5 +62,6 @@ CMD ss-server -s "$SERVER_ADDR" \
               -t "$TIMEOUT"     \
               -d "$DNS_ADDR"    \
               -u                \
-              --fast-open $OPTIONS \
-              --acl /etc/ss-server/local.acl
+              --fast-open       \
+              --acl /etc/ss-server/local.acl \
+              $OPTIONS
