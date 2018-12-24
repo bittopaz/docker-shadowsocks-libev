@@ -39,6 +39,8 @@ RUN set -ex \
         && ./autogen.sh \
         && ./configure --disable-documentation \
         && make install \
+        && mkdir /etc/ss-server \
+        && cp acl/local.acl /etc/ss-server/ \
         && cd .. \
         && rm -rf $SS_DIR \
     && apk del TMP
@@ -60,4 +62,5 @@ CMD ss-server -s "$SERVER_ADDR" \
               -t "$TIMEOUT"     \
               -d "$DNS_ADDR"    \
               -u                \
-              --fast-open $OPTIONS
+              --fast-open $OPTIONS \
+              --acl /etc/ss-server/local.acl
